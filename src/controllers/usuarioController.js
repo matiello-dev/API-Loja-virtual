@@ -11,6 +11,9 @@ export async function cadastrar(request, response) {
 
 export async function login(request, response) {
   try {
+    if (!request.body.email || !request.body.senha) {
+      return response.status(400).json({ mensagem: "Email e senha são obrigatórios" });
+    }
     const resultado = await usuarioLogic.login(request.body ?? {});
     return response.status(200).json(resultado);
   } catch (error) {

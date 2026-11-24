@@ -14,3 +14,14 @@ export function buscarPorIdProduto(id) {
 
   return produto;
 }
+export function buscarPorNomeProduto(nome) {
+  const produtos = db.prepare("SELECT * FROM produtos WHERE nome LIKE ?").all(`%${nome}%`);
+
+  return produtos;
+}
+
+export function buscarPorCategoriaProduto(categoria) {
+  const produtos = db.prepare("SELECT * FROM produtos WHERE categoria = ?").all(categoria);
+
+  return produtos;
+} 

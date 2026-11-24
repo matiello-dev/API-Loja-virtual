@@ -26,22 +26,10 @@ export async function obterProduto(request, response) {
   }
 }
 
-export async function listarProdutos(request, response) {
-  try {
-    const produtos = await produtosLogic.listarProdutos();
 
-    return response.status(200).json(produtos);
-  } catch (error) {
-    console.error(`Erro ao listar produtos: ${error.message}`);
-
-    return response.status(500).json({
-      mensagem: "Erro interno do servidor",
-    });
-  }
-}
-export async function buscarPorNomeProduto(request, response) {
+async function buscarPorNomeProduto(request, response) {
   try {
-    const nome = request.params.nome;
+    const nome = request.query.nome;
     const produto = await produtosLogic.buscarPorNomeProduto(nome);
     return response.status(200).json(produto);
   } catch (error) {
@@ -50,10 +38,10 @@ export async function buscarPorNomeProduto(request, response) {
   }
 }
 
-export async function buscarPorCategoriaProduto(request, response) {
+async function buscarPorCategoriaProduto(request, response) {
   try {
     const CATEGORIAS = [
-      'eletronicos', 'Eletrônicos',
+      'eletrônicos', 'Eletrônicos',
       'roupas', 'Roupas',
       'casa', 'Casa',
       'livros', 'Livros',
@@ -63,7 +51,7 @@ export async function buscarPorCategoriaProduto(request, response) {
       'chocolates', 'Chocolates',
       'cachorro-quente', 'Cachorro-quente'
     ];
-    const categoria = request.params.categoria;
+    const categoria = request.query.categoria;
     if (!CATEGORIAS.includes(categoria)) {
       return response.status(400).json({ mensagem: "Categoria inválida" });
     }
@@ -72,5 +60,29 @@ export async function buscarPorCategoriaProduto(request, response) {
   } catch (error) {
     console.error(`Erro ao buscar produtos por categoria: ${error.message}`);
     return response.status(error.status || 500).json({ mensagem: error.message || "Erro interno do servidor" });
+  }
+}
+
+export async function listarProdutos(request, response) {
+  try {
+    const produtos = await produtosLogic.listarProdutos();
+    const { nome, categoria } = request.query;
+
+    if (nome) {
+      produtos = await buscarPorNomeProduto(request, response);
+    }
+
+    if (categoria) {
+      produtos = await buscarPorCategoriaProduto(request, response);
+    }
+    ;
+
+    return response.status(200).json(produtos);
+  } catch (error) {
+    console.error(`Erro ao listar produtos: ${error.message}`);
+
+    return response.status(500).json({
+      mensagem: "Erro interno do servidor",
+    });
   }
 }

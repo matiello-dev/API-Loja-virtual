@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS itens_compra (
 );
 
 INSERT OR IGNORE INTO categorias (id, nome) VALUES
-  ('eletronicos', 'Eletrônicos'),
+  ('eletrônicos', 'Eletrônicos'),
   ('roupas', 'Roupas'),
   ('casa', 'Casa'),
   ('livros', 'Livros'),
@@ -77,10 +77,10 @@ INSERT OR IGNORE INTO formas_pagamento (id, nome) VALUES
   ('boleto', 'Boleto');
 
 INSERT OR IGNORE INTO produtos (id, nome, descricao, preco, categoria, estoque, imagem) VALUES
-  (1, 'Fone de ouvido Bluetooth', 'Fone sem fio com cancelamento de ruído e bateria para 20 horas.', 19990, 'eletronicos', 15, 'https://loja-api-wheat.vercel.app/imagens/1.jpg'),
-  (2, 'Mouse sem fio', 'Mouse ergonômico com receptor USB e ajuste de sensibilidade.', 8990, 'eletronicos', 30, 'https://loja-api-wheat.vercel.app/imagens/2.jpg'),
-  (3, 'Teclado mecânico', 'Teclado com switches azuis, iluminação e layout ABNT2.', 29990, 'eletronicos', 8, 'https://loja-api-wheat.vercel.app/imagens/3.jpg'),
-  (4, 'Carregador portátil', 'Power bank de 10.000 mAh com duas saídas USB.', 12990, 'eletronicos', 20, 'https://loja-api-wheat.vercel.app/imagens/4.jpg'),
+  (1, 'Fone de ouvido Bluetooth', 'Fone sem fio com cancelamento de ruído e bateria para 20 horas.', 19990, 'eletrônicos', 15, 'https://loja-api-wheat.vercel.app/imagens/1.jpg'),
+  (2, 'Mouse sem fio', 'Mouse ergonômico com receptor USB e ajuste de sensibilidade.', 8990, 'eletrônicos', 30, 'https://loja-api-wheat.vercel.app/imagens/2.jpg'),
+  (3, 'Teclado mecânico', 'Teclado com switches azuis, iluminação e layout ABNT2.', 29990, 'eletrônicos', 8, 'https://loja-api-wheat.vercel.app/imagens/3.jpg'),
+  (4, 'Carregador portátil', 'Power bank de 10.000 mAh com duas saídas USB.', 12990, 'eletrônicos', 20, 'https://loja-api-wheat.vercel.app/imagens/4.jpg'),
   (5, 'Camiseta básica', 'Camiseta 100% algodão, disponível em várias cores.', 4990, 'roupas', 50, 'https://loja-api-wheat.vercel.app/imagens/5.jpg'),
   (6, 'Moletom com capuz', 'Moletom flanelado com bolso canguru.', 15990, 'roupas', 12, 'https://loja-api-wheat.vercel.app/imagens/6.jpg'),
   (7, 'Boné aba curva', 'Boné ajustável com fecho de metal.', 5990, 'roupas', 25, 'https://loja-api-wheat.vercel.app/imagens/7.jpg'),

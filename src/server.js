@@ -39,9 +39,6 @@ app.post("/usuarios", usuarioController.cadastrar);
 app.post("/login", usuarioController.login);
 app.get("/produtos", autenticar, produtosController.listarProdutos);
 app.get("/produtos/:id", autenticar, produtosController.obterProduto);
-app.get("/produtos/?nome=:nome", autenticar, produtosController.buscarPorNomeProduto);
-app.get("/produtos/?categoria=:categoria", autenticar, produtosController.buscarPorCategoriaProduto);
-
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
   app.listen(PORTA, () => {
