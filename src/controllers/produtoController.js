@@ -86,3 +86,13 @@ export async function listarProdutos(request, response) {
     });
   }
 }
+export async function listarFormasDePagamento(request, response) {
+  try {
+    console.log("chegou na controler")
+    const formasDePagamento = await produtosLogic.listarFormasDePagamento();
+    return response.status(200).json(formasDePagamento);
+  } catch (error) {
+    console.error(`Erro ao listar formas de pagamento: ${error.message}`);
+    return response.status(500).json({ mensagem: "Erro interno do servidor" });
+  }
+}
