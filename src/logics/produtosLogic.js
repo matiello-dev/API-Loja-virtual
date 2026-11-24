@@ -29,3 +29,7 @@ export function buscarPorCategoriaProduto(categoria) {
   }
   return produtos;
 }
+export function listarFormasDePagamento() {
+  console.log("logic")
+  return produtosRepository.listarFormasDePagamento();
+}
