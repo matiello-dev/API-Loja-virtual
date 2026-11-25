@@ -2,6 +2,7 @@ import express from "express";
 import { fileURLToPath } from "node:url";
 import * as usuarioController from "./controllers/usuarioController.js";
 import * as produtosController from "./controllers/produtoController.js";
+import * as formasDePagamentoController from "./controllers/formasdepagamentoController.js"
 import { autenticar } from "./middlewares/autenticar.js";
 
 
@@ -39,7 +40,7 @@ app.post("/usuarios", usuarioController.cadastrar);
 app.post("/login", usuarioController.login);
 app.get("/produtos", autenticar, produtosController.listarProdutos);
 app.get("/produtos/:id", autenticar, produtosController.obterProduto);
-app.get("/formasdepagamento", autenticar, produtosController.listarFormasDePagamento);
+app.get("/formasdepagamento", autenticar, formasDePagamentoController.listarFormasDePagamento);
 
 
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
