@@ -9,19 +9,16 @@ export function listar() {
 
 // Retorna um produto pelo id ou null quando ele não existe.
 export function buscarPorIdProduto(id) {
-  // O ? mantém o valor separado do SQL e evita montar a consulta com strings.
   const produto = db.prepare("SELECT * FROM produtos WHERE id = ?").get(id);
 
   return produto;
 }
+
 export function buscarPorNomeProduto(nome) {
-  const produtos = db.prepare("SELECT * FROM produtos WHERE nome LIKE ?").all(`%${nome}%`);
-
-  return produtos;
+  const produto = db.prepare("SELECT * FROM produtos WHERE nome = ?").get(nome);
+  return produto;
 }
-
 export function buscarPorCategoriaProduto(categoria) {
-  const produtos = db.prepare("SELECT * FROM produtos WHERE categoria = ?").all(categoria);
-
-  return produtos;
-} 
+  const produto = db.prepare("SELECT * FROM produtos WHERE categoria = ?").all(categoria);
+  return produto;
+}

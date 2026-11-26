@@ -21,7 +21,7 @@ export function buscarPorNomeProduto(nome) {
 }
 
 export function buscarPorCategoriaProduto(categoria) {
-  const produtos = produtosRepository.buscarPorCategoriaProduto(categoria);
+  const produtos = produtosRepository.buscarPorProdutoCategoria(categoria);
   if(!produtos) {
     const erro = new Error("Produtos não encontrados");
     error.status = 404;
